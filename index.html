@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Literata:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fb;
+    --surface: #ffffff;
+    --text: #14182b;
+    --muted: #5a6078;
+    --line: #dde0ea;
+    --accent: #2646e0;
+    --accent-ink: #ffffff;
+    --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Literata", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10131f;
+      --surface: #181c2c;
+      --text: #eceef7;
+      --muted: #9aa1ba;
+      --line: #2a2f45;
+      --accent: #8ea2ff;
+      --accent-ink: #10131f;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+  }
+
+  /* Sidebar */
+  .side {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5rem 0 3rem;
+  }
+  .name {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .role {
+    margin-top: 1.25rem;
+    color: var(--muted);
+    max-width: 22ch;
+  }
+  nav ul { list-style: none; margin-top: 3rem; }
+  nav a {
+    display: inline-block;
+    padding: 0.35rem 0;
+    font-family: var(--head);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a.active { color: var(--text); border-color: var(--accent); }
+  .social { display: flex; gap: 1.25rem; font-family: var(--head); font-weight: 600; }
+  .social a { color: var(--muted); text-decoration: none; }
+  .social a:hover { color: var(--accent); }
+
+  /* Content */
+  main { padding: 5rem 0 4rem; }
+  section { margin-bottom: 5rem; scroll-margin-top: 3rem; }
+  h2 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  p + p { margin-top: 1rem; }
+  .lede { font-size: 1.3rem; line-height: 1.55; }
+
+  /* Projects as rows */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project h3 {
+    font-family: var(--head);
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+  .project:hover h3 { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+  .project .year { font-family: var(--head); color: var(--muted); }
+  .project p { grid-column: 1 / -1; color: var(--muted); max-width: 60ch; margin: 0; }
+  .tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+  .tags span {
+    font-family: var(--head);
+    font-size: 0.85rem;
+    padding: 0.15rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .skills h3 { font-family: var(--head); font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .skills ul { list-style: none; color: var(--muted); }
+
+  /* Contact */
+  .btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.6rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--head);
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .btn:hover { filter: brightness(1.1); }
+
+  footer { color: var(--muted); font-size: 0.9rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+
+  /* Tablet and mobile */
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 0; }
+    .side { position: static; height: auto; padding: 3rem 0 0; gap: 2rem; }
+    nav ul { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .social { margin-top: 2rem; }
+    main { padding-top: 3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <header class="side">
+    <div>
+      <h1 class="name">Your<br>Name</h1>
+      <p class="role">Web developer &amp; designer who builds clear, fast websites.</p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="social">
+      <a href="https://github.com/yourname">GitHub</a>
+      <a href="https://linkedin.com/in/yourname">LinkedIn</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lede">I turn ideas into websites and apps that are easy to use and pleasant to look at.</p>
+      <p>I'm based in [your city] and have [X years] of experience working on [type of projects]. I care about clean code, accessible design, and getting details right. Replace this paragraph with a short story about how you started and what you want to build next.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <a class="project" href="#">
+        <h3>Project one</h3><span class="year">2026</span>
+        <p>One or two sentences on what it does, who it's for, and what you contributed.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      </a>
+      <a class="project" href="#">
+        <h3>Project two</h3><span class="year">2025</span>
+        <p>Describe the problem you solved and the result, such as faster load times or more users.</p>
+        <div class="tags"><span>React</span><span>Node.js</span></div>
+      </a>
+      <a class="project" href="#">
+        <h3>Project three</h3><span class="year">2024</span>
+        <p>Link each project to its live site or source code by changing the href.</p>
+        <div class="tags"><span>Python</span><span>Django</span></div>
+      </a>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Front end</h3><ul><li>HTML &amp; CSS</li><li>JavaScript</li><li>React</li></ul></div>
+        <div><h3>Back end</h3><ul><li>Node.js</li><li>Python</li><li>SQL</li></ul></div>
+        <div><h3>Tools</h3><ul><li>Git &amp; GitHub</li><li>Figma</li><li>VS Code</li></ul></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Have a project or a job opening? I'd like to hear about it.</p>
+      <a class="btn" href="mailto:you@example.com">Email me</a>
+    </section>
+
+    <footer>&copy; 2026 Your Name</footer>
+  </main>
+</div>
+
+<script>
+  // Highlight the nav link for the section currently on screen
+  const links = document.querySelectorAll('nav a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
