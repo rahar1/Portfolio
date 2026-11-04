@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raharman Khatiwada – Electrical Engineer in Dharan, Nepal</title>
+<meta name="description" content="Raharman Khatiwada is an electrical engineer in Dharan, Sunsari, Nepal. Projects: drone building, automatic stair light and automatic gate system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Literata:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fb;
+    --surface: #ffffff;
+    --text: #14182b;
+    --muted: #5a6078;
+    --line: #dde0ea;
+    --accent: #2646e0;
+    --accent-ink: #ffffff;
+    --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Literata", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10131f;
+      --surface: #181c2c;
+      --text: #eceef7;
+      --muted: #9aa1ba;
+      --line: #2a2f45;
+      --accent: #8ea2ff;
+      --accent-ink: #10131f;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+  }
+
+  /* Sidebar */
+  .side {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5rem 0 3rem;
+  }
+  .name {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 5vw, 3.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+  .role { margin-top: 1.25rem; color: var(--muted); max-width: 26ch; }
+  nav ul { list-style: none; margin-top: 3rem; }
+  nav a {
+    display: inline-block;
+    padding: 0.35rem 0;
+    font-family: var(--head);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a.active { color: var(--text); border-color: var(--accent); }
+  .social { display: flex; gap: 1.25rem; font-family: var(--head); font-weight: 600; }
+  .social a { color: var(--muted); text-decoration: none; }
+  .social a:hover { color: var(--accent); }
+
+  /* Content */
+  main { padding: 5rem 0 4rem; }
+  section { margin-bottom: 5rem; scroll-margin-top: 3rem; }
+  h2 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  p + p { margin-top: 1rem; }
+  .lede { font-size: 1.3rem; line-height: 1.55; }
+
+  /* Projects as rows */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project h3 { font-family: var(--head); font-size: 1.35rem; font-weight: 600; }
+  .project p { grid-column: 1 / -1; color: var(--muted); max-width: 60ch; margin: 0; }
+  .tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+  .tags span {
+    font-family: var(--head);
+    font-size: 0.85rem;
+    padding: 0.15rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .skills h3 { font-family: var(--head); font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .skills ul { list-style: none; color: var(--muted); }
+
+  /* Contact */
+  .btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.6rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--head);
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .btn:hover { filter: brightness(1.1); }
+
+  footer { color: var(--muted); font-size: 0.9rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 0; }
+    .side { position: static; height: auto; padding: 3rem 0 0; gap: 2rem; }
+    nav ul { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .social { margin-top: 2rem; }
+    main { padding-top: 3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <header class="side">
+    <div>
+      <h1 class="name">Raharman<br>Khatiwada</h1>
+      <p class="role">Electrical engineer in Dharan, Nepal. I build drones and home automation systems.</p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="social">
+      <a href="https://github.com/rahar1">GitHub</a>
+      <a href="https://www.linkedin.com/in/raharman-khatiwada-97632b43a/">LinkedIn</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lede">I design and build electrical and electronic systems that solve everyday problems.</p>
+      <p>I'm an electrical engineer based in Dharan, Sunsari, Nepal. I enjoy working with sensors, microcontrollers and motors, and turning them into things people use: a drone that flies, a light that switches on when you climb the stairs, a gate that opens by itself.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>Drone building</h3><span class="year">2026</span>
+        <p>Designed and assembled a drone from scratch, including the frame, motors, flight controller, power system and wiring, then tuned it for stable flight.</p>
+        <div class="tags"><span>Flight controller</span><span>Brushless motors</span><span>Power systems</span></div>
+      </div>
+      <div class="project">
+        <h3>Automatic stair light</h3><span class="year">2025</span>
+        <p>A lighting system that turns the stair lights on when someone approaches and off again afterward, so the stairs are safe at night and no energy is wasted.</p>
+        <div class="tags"><span>Sensors</span><span>Microcontroller</span><span>LED lighting</span></div>
+      </div>
+      <div class="project">
+        <h3>Automatic gate opening and closing system</h3><span class="year">2024</span>
+        <p>A motor-driven gate that opens and closes automatically, with limit switches to stop it at the right position and a control circuit to run it safely.</p>
+        <div class="tags"><span>Motor control</span><span>Relays</span><span>Automation</span></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Electrical</h3><ul><li>Circuit design</li><li>Wiring &amp; power systems</li><li>Motor control</li></ul></div>
+        <div><h3>Electronics</h3><ul><li>Microcontrollers</li><li>Sensors</li><li>Drone electronics</li></ul></div>
+        <div><h3>Tools</h3><ul><li>Soldering &amp; testing</li><li>Circuit simulation</li><li>Arduino</li></ul></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Have a project, an automation job or a question? I'd like to hear from you.</p>
+      <p>Dharan, Sunsari, Nepal</p>
+      <a class="btn" href="mailto:therahar125@gmail.com">Email me</a>
+    </section>
+
+    <footer>&copy; 2026 Raharman Khatiwada</footer>
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('nav a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
